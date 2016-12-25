@@ -124,6 +124,12 @@ public class MyLinkedListTester {
 	public void testAddEnd()
 	{
         // TODO: implement this test
+		int size = shortList.size();
+		System.out.println(size);
+		shortList.add(size, "end");
+		System.out.println(shortList.size);
+		assertEquals("List's size increased by 1", shortList.size(), size + 1);
+		assertEquals("Last element should be 'end'", shortList.get(size), "end");
 		
 	}
 
@@ -133,6 +139,11 @@ public class MyLinkedListTester {
 	public void testSize()
 	{
 		// TODO: implement this test
+		int size = shortList.size();
+		shortList.add("test");
+		assertEquals("List's size increased by 1", shortList.size(), size + 1);
+		shortList.remove(size);
+		assertEquals("List's size decreased by 1", shortList.size(), size);
 	}
 
 	
@@ -145,6 +156,16 @@ public class MyLinkedListTester {
 	public void testAddAtIndex()
 	{
         // TODO: implement this test
+		try {
+			emptyList.add(1, 10000);
+			fail("Check out of bounds");
+		}
+		catch (IndexOutOfBoundsException e) {
+			
+		}
+		emptyList.add(0, 1);
+	    assertEquals("emptyList has one element", emptyList.size(), 1);
+		assertEquals("first element is 1", emptyList.get(0), Integer.valueOf(1));
 		
 	}
 	
@@ -153,7 +174,16 @@ public class MyLinkedListTester {
 	public void testSet()
 	{
 	    // TODO: implement this test
-	    
+		try {
+			emptyList.set(1, 10000);
+			fail("Check out of bounds");
+		}
+		catch (IndexOutOfBoundsException e) {
+			
+		}
+		emptyList.add(0);
+		emptyList.set(0, 100);
+		assertEquals("first element is 100", emptyList.get(0), Integer.valueOf(100));
 	}
 	
 	
